@@ -9,7 +9,10 @@ const to = args.to || `${__dirname}/downloaded`
 
 const fetch = url => new Promise((resolve, reject) => {
   http.get(url, resolve)
-    .on('error', reject)
+    .on('error', error => {
+      console.error(`ERROR fetching URL ${url}`, error)
+      reject(error)
+    })
 })
 
 const processHtml = response => new Promise((resolve, reject) => {
@@ -49,7 +52,6 @@ const downloadFile = (isbn, url) => response => new Promise((resolve, reject) =>
   const stream = response.pipe(file)
   stream
     .on('finish', function() {
-      console.log("done")
       resolve()
       file.close()
     })
@@ -76,4 +78,7 @@ const request = fetch(url)
     return r
   })
   .then(downloadFiles)
+  .then(() => {
+    console.log('All done ! Happy reading !!')
+  })
   .catch(err => console.error('ERROR', err))
