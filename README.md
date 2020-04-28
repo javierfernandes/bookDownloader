@@ -1,6 +1,12 @@
 # Book Downloader Script
 
-Usage
+# Setup
+
+```bash
+yarn
+```
+
+# Usage
 
 ```js
 node index.js --url=https://link.springer.com/book/10.1007%2F978-3-319-64410-3
@@ -31,4 +37,22 @@ node index.js --url=https://link.springer.com/book/10.1007%2F978-3-319-94463-0
 > done
 > done
 > done
+```
+
+And it creates a folder structure like this
+
+```bash
+downloaded
+├── 978-1-4471-6684-9
+│   ├── 10.1007%2F978-1-4471-6684-9.pdf
+│   └── 978-1-4471-6684-9
+├── 978-3-319-64410-3
+│   ├── 10.1007%2F978-3-319-64410-3.epub
+│   ├── 10.1007%2F978-3-319-64410-3.pdf
+│   ├── 978-3-319-64410-3
+│   └── 978-3-319-64410-3.jpg
+└── 978-3-319-94463-0
+    ├── 10.1007%2F978-3-319-94463-0.epub
+    ├── 10.1007%2F978-3-319-94463-0.pdf
+    └── 978-3-319-94463-0
 ```
