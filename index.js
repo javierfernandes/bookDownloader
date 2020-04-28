@@ -1,9 +1,11 @@
 const http = require('https')
 const cheerio = require('cheerio')
 const fs = require('fs')
+const args = require('minimist')(process.argv.slice(2));
 
-const url = 'https://link.springer.com/book/10.1007%2F978-3-319-64410-3'
-const to = `${__dirname}/downloaded`
+
+const url = args.url
+const to = args.to || `${__dirname}/downloaded`
 
 const fetch = url => new Promise((resolve, reject) => {
   http.get(url, resolve)
